@@ -1,7 +1,6 @@
 import plotly.express as px
-from dash.dependencies import Input, Output
 from dash_utils.callback_manager import CallbackManager
-import dash_html_components as html
+from dash import html
 
 callback_manager = CallbackManager()
 
