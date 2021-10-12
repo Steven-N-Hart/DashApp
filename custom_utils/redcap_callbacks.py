@@ -43,7 +43,15 @@ def update_chart(jsonified_cleaned_data, dataset_name):
                            pattern_shape='prc_scanning_complete',
                             color="slide_stain")
     elif dataset_name == 'DLMP-AI/m087494_ganomaly':
-        fig = None
+        df['Entered']=df.index
+        fig = px.bar(df,
+                           x="sub_project",
+                           y='Entered',
+                           color="disease_status")
+        fig.update_layout(barmode="group")
+
+    else:
+        raise ValueError("Wrong study selected")
     return fig
 
 
@@ -57,9 +65,12 @@ def update_chart(jsonified_cleaned_data, dataset_name):
 def update_chart(jsonified_cleaned_data, dataset_name):
     df = pd.read_json(jsonified_cleaned_data)
     df.reset_index(inplace=True)
+    # print(f'Dataset name: {dataset_name}')
+    # print(df.columns)
     if dataset_name == 'DLMP-AI/ID-Consultation':
         fig = px.bar(df, y="sub_project", x=['anno_chady', 'anno_trynda', 'annot_tom'])
         fig.update_layout(barmode="group")
-    elif dataset_name == 'DLMP-AI/m087494_ganomaly':
-        fig = None
+    else:                                               # dataset_name == 'DLMP-AI/m087494_ganomaly':
+        fig = px.histogram(df, x="sub_project", color="anno_blessed")
+        fig.update_layout(barmode="group")
     return fig
