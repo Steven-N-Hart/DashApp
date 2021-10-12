@@ -17,15 +17,15 @@ dataset_layout = html.Div([
 
 
 lo = html.Div(children=[
-    html.H1("Issues"),
-    dcc.Graph(id='issue-assigned'),
-    html.Br(),
-    html.H1("Milestones"),
+
     html.Div([
+        html.H1("Issues"),
+        dcc.Graph(id='issue-assigned'),
+        html.H1("Milestones"),
         dcc.Graph(id='milestone-map'),
         dcc.Graph(id='milestone-gauge'),
         ],
-        style={'columnCount': 2}
+        style={'columnCount': 3}
     ),
     html.Table(id='milestones-table'),
     html.Div(id='gh-milestones', style={'display': 'none'}),

@@ -1,6 +1,3 @@
-import datetime
-
-from custom_utils.utils import generate_table
 import pandas as pd
 from custom_utils import gh_utils
 from dash.dependencies import Input, Output
