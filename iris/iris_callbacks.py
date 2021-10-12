@@ -1,7 +1,7 @@
 from dash.dependencies import Input, Output
-from dash_utils.callback_manager import CallbackManager
+from custom_utils.callback_manager import CallbackManager
 import pandas as pd
-from dash_utils.utils import get_dataset, generate_table
+from custom_utils.utils import get_dataset, generate_table
 import plotly.express as px
 
 # Import the custom call-back manager

@@ -1,5 +1,5 @@
 import plotly.express as px
-from dash_utils.callback_manager import CallbackManager
+from custom_utils.callback_manager import CallbackManager
 from dash import html
 
 callback_manager = CallbackManager()

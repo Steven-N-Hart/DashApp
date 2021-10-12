@@ -2,20 +2,20 @@ import dash
 from dash.html import Div
 
 
-from dash_utils.utils import callback_manager as l_cb
-from dash_utils.layouts import dataset_layout
+from custom_utils.utils import callback_manager as l_cb
+from custom_utils.layouts import dataset_layout
+from custom_utils.gh_callbacks import callback_manager as gh_cb
 
-from id_dashboard.id_callbacks import callback_manager as id_cb
-from id_dashboard.id_layouts import id_lo
+from custom_utils.layouts import lo
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 l_cb.attach_to_app(app)
-id_cb.attach_to_app(app)
+gh_cb.attach_to_app(app)
 
 app.layout = Div([
     dataset_layout,
-    id_lo,
+    lo,
 ])
 
 

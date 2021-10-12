@@ -18,22 +18,24 @@ for when and how to modify the data as fields change.
 
 ### Working with graphs
 An example for getting data for a graph object is below:
+
 ```python
 # First, make sure you import the required objects for building callbacks
 from dash.dependencies import Input, Output
-from dash_utils.callback_manager import CallbackManager     
+from custom_utils.callback_manager import CallbackManager
 
 # My special callback manager. Use this instead of "@app.callback"
 callback_manager = CallbackManager()
 
+
 # This is an example of returning a graph. 
-@callback_manager.callback( 
-    Output("output_id", "figure"), # Defines the output key and type
-    [Input("input_id" , "value")]   # Defines where the data are coming from
+@callback_manager.callback(
+    Output("output_id", "figure"),  # Defines the output key and type
+    [Input("input_id", "value")]  # Defines where the data are coming from
 )
-def update_bar_chart(df): # One Input is defined above, so there must be 1 variable name here
+def update_bar_chart(df):  # One Input is defined above, so there must be 1 variable name here
     # some function that does some data munging
-    fig = '' # Build a figure object however you want
+    fig = ''  # Build a figure object however you want
     return fig
 ```
 
@@ -61,8 +63,10 @@ def get_data(value):
 Now, anytime we want to use that data, we just have to create another callback that uses 'intermediate-ds'
 as input. In this case, we'll assign the output to the field 'table'. I'll also import my handy JSON->HTML
 table generator code from the `dash_utils` directory.
+
 ```python
-from dash_utils.utils import generate_table
+from custom_utils.utils import generate_table
+
 
 @callback_manager.callback(Output('table', 'children'), [Input('intermediate-ds', 'children')])
 def update_table(jsonified_cleaned_data):
